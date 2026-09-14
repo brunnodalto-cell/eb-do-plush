@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EB do Plush</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #090b12, #151a27);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(25, 29, 42, 0.96);
+      border: 1px solid #343b50;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, #6d5dfc, #3b82f6);
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 7px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aeb6ca;
+      margin: 0 0 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 8px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    input,
+    select {
+      border: 1px solid #414a62;
+      background: #101420;
+      color: white;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #6d5dfc;
+    }
+
+    button {
+      margin-top: 22px;
+      border: 0;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6d5dfc, #3b82f6);
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: #ff8d8d;
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    .success {
+      background: rgba(52, 211, 153, .12);
+      border: 1px solid rgba(52, 211, 153, .4);
+      color: #8ff0c7;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .user-box {
+      background: #101420;
+      border: 1px solid #343b50;
+      border-radius: 12px;
+      padding: 13px;
+      margin-top: 18px;
+      color: #b9c1d5;
+    }
+
+    .back {
+      background: #2b3140;
+      margin-top: 10px;
+    }
+
+    .small {
+      color: #7f899f;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <main class="card">
+
+    <section id="loginScreen">
+
+      <div class="logo">EB</div>
+
+      <h1>EB do Plush</h1>
+
+      <p class="subtitle">
+        Painel de acesso
+      </p>
+
+      <label for="username">
+        Nome de usuário
+      </label>
+
+      <input
+        id="username"
+        type="text"
+        placeholder="Digite seu nome"
+      >
+
+      <label for="password">
+        Senha
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Digite sua senha"
+      >
+
+      <button onclick="login()">
+        Confirmar
+      </button>
+
+      <div id="loginError" class="error"></div>
+
+      <p class="small">
+        Painel demonstrativo de promoção de patentes.
+      </p>
+
+    </section>
+
+
+    <!-- TELA DE PROMOÇÃO -->
+
+    <section id="promotionScreen" class="hidden">
+
+      <div class="logo">★</div>
+
+      <h1>Promoção</h1>
+
+      <p class="subtitle">
+        EB do Plush
+      </p>
+
+
+      <label for="robloxNick">
+        Nick do Roblox
+      </label>
+
+      <input
+        id="robloxNick"
+        type="text"
+        placeholder="Digite o nick do jogador"
+      >
+
+      <button onclick="confirmNick()">
+        Confirmar nick
+      </button>
+
+      <div id="nickError" class="error"></div>
+
+
+      <div id="rankArea" class="hidden">
+
+        <div class="user-box">
+          Jogador:
+          <strong id="playerName"></strong>
+        </div>
+
+
+        <label for="rank">
+          Escolha a patente
+        </label>
+
+        <select id="rank">
+
+          <option>Recruta</option>
+          <option>Soldado</option>
+          <option>Cabo</option>
+          <option>3 Sargento</option>
+          <option>2 Sargento</option>
+          <option>1 Sargento</option>
+          <option>Subtenente</option>
+          <option>Cadete</option>
+          <option>Aspirante a Oficial</option>
+          <option>2 Tenente</option>
+          <option>1 Tenente</option>
+          <option>Capitão</option>
+          <option>Major</option>
+          <option>Tenente Coronel</option>
+          <option>Coronel</option>
+          <option>General de brigada</option>
+          <option>General de divisão</option>
+          <option>General de exército</option>
+          <option>Sub-comandante</option>
+          <option>Comandante</option>
+          <option>Marechal</option>
+          <option>Vice presidente</option>
+          <option>Presidente</option>
+
+        </select>
+
+
+        <button onclick="promote()">
+          Promover jogador
+        </button>
+
+        <div id="result"></div>
+
+
+        <button class="back" onclick="logout()">
+          Sair
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    // LOGIN
+
+    const VALID_USER = "plush chance";
+    const VALID_PASSWORD = "Gorebox1234";
+
+
+    function login() {
+
+      const user =
+        document.getElementById("username").value.trim();
+
+      const pass =
+        document.getElementById("password").value;
+
+      const error =
+        document.getElementById("loginError");
+
+
+      if (
+        user === VALID_USER &&
+        pass === VALID_PASSWORD
+      ) {
+
+        document
+          .getElementById("loginScreen")
+          .classList.add("hidden");
+
+        document
+          .getElementById("promotionScreen")
+          .classList.remove("hidden");
+
+        error.textContent = "";
+
+      } else {
+
+        error.textContent =
+          "Nome de usuário ou senha incorretos.";
+
+      }
+
+    }
+
+
+    // CONFIRMAR NICK
+
+    function confirmNick() {
+
+      const nick =
+        document.getElementById("robloxNick").value.trim();
+
+      const error =
+        document.getElementById("nickError");
+
+      const area =
+        document.getElementById("rankArea");
+
+
+      if (!nick) {
+
+        error.textContent =
+          "Digite o nick do jogador.";
+
+        area.classList.add("hidden");
+
+        return;
+      }
+
+
+      error.textContent = "";
+
+      document
+        .getElementById("playerName")
+        .textContent = nick;
+
+      area.classList.remove("hidden");
+
+      document
+        .getElementById("result")
+        .innerHTML = "";
+
+    }
+
+
+    // PROMOVER
+
+    function promote() {
+
+      const nick =
+        document.getElementById("robloxNick").value.trim();
+
+      const rank =
+        document.getElementById("rank").value;
+
+
+      document
+        .getElementById("result")
+        .innerHTML =
+
+        '<div class="success">' +
+
+        'Promoção registrada no painel:<br>' +
+
+        '<strong>' + nick + '</strong> → ' +
+
+        '<strong>' + rank + '</strong>' +
+
+        '</div>';
+
+    }
+
+
+    // SAIR
+
+    function logout() {
+
+      document
+        .getElementById("promotionScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("loginScreen")
+        .classList.remove("hidden");
+
+
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("robloxNick").value = "";
+
+      document
+        .getElementById("rankArea")
+        .classList.add("hidden");
+
+      document
+        .getElementById("result")
+        .innerHTML = "";
+
+    }
+
+  </script>
+
+</body>
+</html>
