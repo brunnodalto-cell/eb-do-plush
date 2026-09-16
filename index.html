@@ -303,9 +303,9 @@ const SECOND_PASSWORD = "pingola5514";
 
 
       if (
-        user === VALID_USER &&
-        pass === VALID_PASSWORD
-      ) {
+    (user === VALID_USER && pass === VALID_PASSWORD) ||
+    (user === SECOND_USER && pass === SECOND_PASSWORD)
+) {
 
         document
           .getElementById("loginScreen")
